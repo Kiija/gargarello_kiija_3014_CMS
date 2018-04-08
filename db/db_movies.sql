@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2018 at 07:22 PM
+-- Generation Time: Apr 08, 2018 at 04:20 AM
 -- Server version: 5.6.35
--- PHP Version: 7.0.15
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,376 +17,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: db_movies
+-- Database: `db_movies`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tbl_arating
+-- Table structure for table `tbl_genre`
 --
 
-CREATE TABLE tbl_arating (
-  arating_id smallint(5) UNSIGNED NOT NULL,
-  arating_name varchar(125) NOT NULL,
-  arating_desc text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table tbl_arating
---
-
-INSERT INTO tbl_arating (arating_id, arating_name, arating_desc) VALUES
-(1, 'G', 'G – General Audiences\r\nAll ages admitted. Nothing that would offend parents for viewing by children. '),
-(2, 'PG', 'PG – Parental Guidance Suggested\r\nSome material may not be suitable for children. Parents urged to give  	&ldquo;parental guidance&rdquo;. '),
-(3, 'PG-13', 'PG-13 – Parents Strongly Cautioned\r\nSome material may be inappropriate for children under 13. Parents are urged to be cautious. Some material may be inappropriate for pre-teenagers.'),
-(4, 'R', 'R – Restricted\r\nUnder 17 requires accompanying parent or adult guardian. Contains some adult material. Parents are urged to learn more about the film before taking their young children with them. '),
-(5, 'NC-17', 'NC-17 – Adults Only\r\nNo One 17 and Under Admitted. Clearly adult. Children are not admitted. ');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_cast
---
-
-CREATE TABLE tbl_cast (
-  cast_id mediumint(8) UNSIGNED NOT NULL,
-  cast_name varchar(250) NOT NULL
+CREATE TABLE `tbl_genre` (
+  `genre_id` tinyint(3) UNSIGNED NOT NULL,
+  `genre_name` varchar(125) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table tbl_cast
+-- Dumping data for table `tbl_genre`
 --
 
-INSERT INTO tbl_cast (cast_id, cast_name) VALUES
-(36, 'Amy Adams'),
-(26, 'Andrew Garfield'),
-(8, 'Aneurin Barnard'),
-(42, 'Anna Kendrick'),
-(14, 'Boyd Holbrook'),
-(5, 'Bradley Cooper'),
-(1, 'Chris Pratt'),
-(19, 'Colm Hill'),
-(13, 'Dafne Keen'),
-(7, 'Damien Bonnard'),
-(22, 'Dan Stevens'),
-(30, 'Darcy Bryce'),
-(3, 'Dave Bautista'),
-(33, 'Ed Skrein'),
-(21, 'Emma Watson'),
-(6, 'Fionn Whitehead'),
-(38, 'Forest Whitaker'),
-(46, 'Harrison Ford'),
-(11, 'Hugh Jackman'),
-(28, 'Jacob Warner'),
-(10, 'James Bloor'),
-(37, 'Jeremy Renner'),
-(45, 'Joseph Gordon-Levitt'),
-(24, 'Josh Gad'),
-(32, 'Karan Soni'),
-(20, 'Kathryn Kirkpatrick'),
-(25, 'Kevin Kline'),
-(9, 'Lee Armstrong'),
-(43, 'Leonardo DiCaprio'),
-(23, 'Luke Evans'),
-(40, 'Mark OBrien'),
-(34, 'Michael Benyaer'),
-(18, 'Michael Mitton'),
-(39, 'Michael Stuhlbarg'),
-(47, 'Miles Teller'),
-(29, 'Milo Gibson'),
-(12, 'Patrick Stewart'),
-(27, 'Richard Pyros'),
-(31, 'Ryan Reynolds'),
-(52, 'Sandra Bullock'),
-(44, 'Saoirse Ronan'),
-(17, 'Sheena Kamal'),
-(35, 'Stefan Kapicic'),
-(15, 'Stephen Merchant'),
-(53, 'Suraj Sharma'),
-(16, 'Tilda Swinton'),
-(41, 'Tom Costello'),
-(4, 'Vin Diesel'),
-(2, 'Zoe Saldana');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_comments
---
-
-CREATE TABLE tbl_comments (
-  comments_id mediumint(8) UNSIGNED NOT NULL,
-  comments_auth varchar(125) NOT NULL,
-  comments_copy text NOT NULL,
-  comments_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_country
---
-
-CREATE TABLE tbl_country (
-  country_id smallint(3) NOT NULL,
-  country_name varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table tbl_country
---
-
-INSERT INTO tbl_country (country_id, country_name) VALUES
-(1, 'Albania'),
-(2, 'Algeria'),
-(3, 'Andorra'),
-(4, 'Angola'),
-(5, 'Anguilla'),
-(6, 'Antarctica'),
-(7, 'Antigua'),
-(8, 'Antilles'),
-(9, 'Argentina'),
-(10, 'Armenia'),
-(11, 'Aruba'),
-(12, 'Australia'),
-(13, 'Austria'),
-(14, 'Azerbaijan'),
-(15, 'Bahamas'),
-(16, 'Bangladesh'),
-(17, 'Barbados'),
-(18, 'Belarus'),
-(19, 'Belgium'),
-(20, 'Belize'),
-(21, 'Benin'),
-(22, 'Bermuda'),
-(23, 'Bhutan'),
-(24, 'Bolivia'),
-(25, 'Bosnia'),
-(26, 'Botswana'),
-(27, 'Brazil'),
-(28, 'Brunei'),
-(29, 'Bulgaria'),
-(30, 'Burkina Faso'),
-(31, 'Burundi'),
-(32, 'Cambodia'),
-(33, 'Cameroon'),
-(34, 'Canada'),
-(35, 'Cape Verde'),
-(36, 'Cayman Islands'),
-(37, 'Central Africa'),
-(38, 'Chad'),
-(39, 'Chile'),
-(40, 'China'),
-(41, 'Colombia'),
-(42, 'Comoros'),
-(43, 'Congo'),
-(44, 'Cook Islands'),
-(45, 'Costa Rica'),
-(46, 'Cote D\'Ivoire'),
-(47, 'Croatia'),
-(48, 'Cuba'),
-(49, 'Cyprus'),
-(50, 'Czech Republic'),
-(51, 'Denmark'),
-(52, 'Djibouti'),
-(53, 'Dominica'),
-(54, 'Dominican Rep.'),
-(55, 'Ecuador'),
-(56, 'Egypt'),
-(57, 'El Salvador'),
-(58, 'Eritrea'),
-(59, 'Estonia'),
-(60, 'Ethiopia'),
-(61, 'Fiji'),
-(62, 'Finland'),
-(63, 'Falkland Islands'),
-(64, 'France'),
-(65, 'Gabon'),
-(66, 'Gambia'),
-(67, 'Georgia'),
-(68, 'Germany'),
-(69, 'Ghana'),
-(70, 'Gibraltar'),
-(71, 'Greece'),
-(72, 'Greenland'),
-(73, 'Grenada'),
-(74, 'Guam'),
-(75, 'Guatemala'),
-(76, 'Guiana'),
-(77, 'Guinea'),
-(78, 'Guyana'),
-(79, 'Haiti'),
-(80, 'Hondoras'),
-(81, 'Hong Kong'),
-(82, 'Hungary'),
-(83, 'Iceland'),
-(84, 'India'),
-(85, 'Indonesia'),
-(86, 'Iran'),
-(87, 'Iraq'),
-(88, 'Ireland'),
-(89, 'Israel'),
-(90, 'Italy'),
-(91, 'Jamaica'),
-(92, 'Japan'),
-(93, 'Jordan'),
-(94, 'Kazakhstan'),
-(95, 'Kenya'),
-(96, 'Kiribati'),
-(97, 'Korea'),
-(98, 'Kyrgyzstan'),
-(99, 'Lao'),
-(100, 'Latvia'),
-(101, 'Lesotho'),
-(102, 'Liberia'),
-(103, 'Liechtenstein'),
-(104, 'Lithuania'),
-(105, 'Luxembourg'),
-(106, 'Macau'),
-(107, 'Macedonia'),
-(108, 'Madagascar'),
-(109, 'Malawi'),
-(110, 'Malaysia'),
-(111, 'Maldives'),
-(112, 'Mali'),
-(113, 'Malta'),
-(114, 'Marshal Islands'),
-(115, 'Martinique'),
-(116, 'Mauritania'),
-(117, 'Mauritius'),
-(118, 'Mayotte'),
-(119, 'Mexico'),
-(120, 'Micronesia'),
-(121, 'Moldova'),
-(122, 'Monaco'),
-(123, 'Mongolia'),
-(124, 'Montserrat'),
-(125, 'Morocco'),
-(126, 'Mozambique'),
-(127, 'Myanmar'),
-(128, 'Namibia'),
-(129, 'Nauru'),
-(130, 'Nepal'),
-(131, 'Netherlands'),
-(132, 'New Caledonia'),
-(133, 'New Guinea'),
-(134, 'New Zealand'),
-(135, 'Nicaragua'),
-(136, 'Nigeria'),
-(137, 'Niue'),
-(138, 'Norfolk Island'),
-(139, 'Norway'),
-(140, 'Palau'),
-(141, 'Panama'),
-(142, 'Paraguay'),
-(143, 'Peru'),
-(144, 'Puerto'),
-(145, 'Philippines'),
-(146, 'Poland'),
-(147, 'Polynesia'),
-(148, 'Portugal'),
-(149, 'Romania'),
-(150, 'Russia'),
-(151, 'Rwanda'),
-(152, 'Saint Lucia'),
-(153, 'Samoa'),
-(154, 'San Marino'),
-(155, 'Senegal'),
-(156, 'Seychelles'),
-(157, 'Sierra Leone'),
-(158, 'Singapore'),
-(159, 'Slovakia'),
-(160, 'Slovenia'),
-(161, 'Somalia'),
-(162, 'South Africa'),
-(163, 'Spain'),
-(164, 'Sri Lanka'),
-(165, 'St. Helena'),
-(166, 'Sudan'),
-(167, 'Suriname'),
-(168, 'Swaziland'),
-(169, 'Sweden'),
-(170, 'Switzerland'),
-(171, 'Taiwan'),
-(172, 'Tajikistan'),
-(173, 'Tanzania'),
-(174, 'Thailand'),
-(175, 'Togo'),
-(176, 'Tokelau'),
-(177, 'Tonga'),
-(178, 'Trinidad'),
-(179, 'Tunisia'),
-(180, 'Turkey'),
-(181, 'Uganda'),
-(182, 'Ukraine'),
-(183, 'United Kingdom'),
-(184, 'United States'),
-(185, 'Uruguay'),
-(186, 'Uzbekistan'),
-(187, 'Vanuatu'),
-(188, 'Venezuela'),
-(189, 'Vietnam'),
-(190, 'Virgin Islands'),
-(191, 'Yugoslavia'),
-(192, 'Zaire'),
-(193, 'Zambia'),
-(194, 'Zimbabwe');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_director
---
-
-CREATE TABLE tbl_director (
-  director_id smallint(5) UNSIGNED NOT NULL,
-  director_name varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_director
---
-
-INSERT INTO tbl_director (director_id, director_name) VALUES
-(1, 'James Gunn'),
-(2, 'Christopher Nolan'),
-(3, 'James Mangold'),
-(4, 'Joon-ho Bong'),
-(5, 'Bill Condon'),
-(6, 'Mel Gibson'),
-(7, 'Tim Miller'),
-(8, 'Denis Villeneuve '),
-(9, 'Dexter Fletcher'),
-(10, 'Mike Mitchell'),
-(11, 'Walt Dohrn'),
-(12, 'Alejandro Gonzalez Inarritu'),
-(13, 'John Crowley '),
-(14, 'Robert Zemeckis'),
-(15, 'Florian Gallenberger '),
-(16, 'J.J. Abrams'),
-(17, 'Damien Chazelle'),
-(18, 'Joseph Gordon-Levitt '),
-(19, 'Alfonso Cuaron'),
-(20, 'Ang Lee'),
-(21, 'David O. Russell');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_genre
---
-
-CREATE TABLE tbl_genre (
-  genre_id tinyint(3) UNSIGNED NOT NULL,
-  genre_name varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_genre
---
-
-INSERT INTO tbl_genre (genre_id, genre_name) VALUES
+INSERT INTO `tbl_genre` (`genre_id`, `genre_name`) VALUES
 (1, 'Action'),
 (2, 'Adventure'),
 (3, 'Comedy'),
@@ -407,449 +56,69 @@ INSERT INTO tbl_genre (genre_id, genre_name) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table tbl_language
+-- Table structure for table `tbl_movies`
 --
 
-CREATE TABLE tbl_language (
-  lang_id smallint(5) UNSIGNED NOT NULL,
-  lang_name varchar(250) NOT NULL
+CREATE TABLE `tbl_movies` (
+  `movies_id` mediumint(8) UNSIGNED NOT NULL,
+  `movies_cover` varchar(75) NOT NULL DEFAULT 'cover_default.jpg',
+  `movies_title` varchar(125) NOT NULL,
+  `movies_year` varchar(5) NOT NULL,
+  `movies_runtime` varchar(25) NOT NULL,
+  `movies_storyline` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table tbl_language
+-- Dumping data for table `tbl_movies`
 --
 
-INSERT INTO tbl_language (lang_id, lang_name) VALUES
-(1, 'Abkhaz'),
-(2, 'Afar'),
-(3, 'Afrikaans'),
-(4, 'Akan'),
-(5, 'Albanian'),
-(6, 'Amharic'),
-(7, 'Arabic'),
-(8, 'Aragonese'),
-(9, 'Armenian'),
-(10, 'Assamese'),
-(11, 'Avaric'),
-(12, 'Avestan'),
-(13, 'Aymara'),
-(14, 'Azerbaijani'),
-(15, 'Bambara'),
-(16, 'Bashkir'),
-(17, 'Basque'),
-(18, 'Belarusian'),
-(19, 'Bengali'),
-(20, 'Bihari'),
-(21, 'Bislama'),
-(22, 'Bosnian'),
-(23, 'Breton'),
-(24, 'Bulgarian'),
-(25, 'Burmese'),
-(26, 'Catalan'),
-(27, 'Valencian'),
-(28, 'Chamorro'),
-(29, 'Chechen'),
-(30, 'Chichewa'),
-(31, 'Chewa'),
-(32, 'Nyanja'),
-(33, 'Chinese'),
-(34, 'Chuvash'),
-(35, 'Cornish'),
-(36, 'Corsican'),
-(37, 'Cree'),
-(38, 'Croatian'),
-(39, 'Czech'),
-(40, 'Danish'),
-(41, 'Divehi'),
-(42, 'Dhivehi'),
-(43, 'Maldivian'),
-(44, 'Dutch'),
-(45, 'English'),
-(46, 'Esperanto'),
-(47, 'Estonian'),
-(48, 'Ewe'),
-(49, 'Faroese'),
-(50, 'Fijian'),
-(51, 'Finnish'),
-(52, 'French'),
-(53, 'Fula'),
-(54, 'Fulah'),
-(55, 'Pulaar'),
-(56, 'Pular'),
-(57, 'Galician'),
-(58, 'Georgian'),
-(59, 'German'),
-(60, 'Greek'),
-(61, 'Guaraní'),
-(62, 'Gujarati'),
-(63, 'Haitian'),
-(64, 'Haitian Creole'),
-(65, 'Hausa'),
-(66, 'Hebrew'),
-(67, 'Herero'),
-(68, 'Hindi'),
-(69, 'Hiri Motu'),
-(70, 'Hungarian'),
-(71, 'Interlingua'),
-(72, 'Indonesian'),
-(73, 'Interlingue'),
-(74, 'Irish'),
-(75, 'Igbo'),
-(76, 'Inupiaq'),
-(77, 'Ido'),
-(78, 'Icelandic'),
-(79, 'Italian'),
-(80, 'Inuktitut'),
-(81, 'Japanese'),
-(82, 'Javanese'),
-(83, 'Kalaallisut'),
-(84, 'Greenlandic'),
-(85, 'Kannada'),
-(86, 'Kanuri'),
-(87, 'Kashmiri'),
-(88, 'Kazakh'),
-(89, 'Khmer'),
-(90, 'Kikuyu'),
-(91, 'Gikuyu'),
-(92, 'Kinyarwanda'),
-(93, 'Kirghiz'),
-(94, 'Kyrgyz'),
-(95, 'Komi'),
-(96, 'Kongo'),
-(97, 'Korean'),
-(98, 'Kurdish'),
-(99, 'Kwanyama'),
-(100, 'Kuanyama'),
-(101, 'Latin'),
-(102, 'Luxembourgish'),
-(103, 'Letzeburgesch'),
-(104, 'Luganda'),
-(105, 'Limburgish'),
-(106, 'Limburgan'),
-(107, 'Limburger'),
-(108, 'Lingala'),
-(109, 'Lao'),
-(110, 'Lithuanian'),
-(111, 'Luba-Katanga'),
-(112, 'Latvian'),
-(113, 'Manx'),
-(114, 'Macedonian'),
-(115, 'Malagasy'),
-(116, 'Malay'),
-(117, 'Malayalam'),
-(118, 'Maltese'),
-(119, 'Maori'),
-(120, 'Marathi'),
-(121, 'Marshallese'),
-(122, 'Mongolian'),
-(123, 'Nauru'),
-(124, 'Navajo'),
-(125, 'Navaho'),
-(126, 'Norwegian Bokmal'),
-(127, 'North Ndebele'),
-(128, 'Nepali'),
-(129, 'Ndonga'),
-(130, 'Norwegian Nynorsk'),
-(131, 'Norwegian'),
-(132, 'Nuosu'),
-(133, 'South Ndebele'),
-(134, 'Occitan'),
-(135, 'Ojibwe'),
-(136, 'Ojibwa'),
-(137, 'Old Church Slavonic'),
-(138, 'Church Slavic'),
-(139, 'Church Slavonic'),
-(140, 'Old Bulgarian'),
-(141, 'Old Slavonic'),
-(142, 'Oromo'),
-(143, 'Oriya'),
-(144, 'Ossetian'),
-(145, 'Ossetic'),
-(146, 'Panjabi'),
-(147, 'Punjabi'),
-(148, 'Pali'),
-(149, 'Persian'),
-(150, 'Polish'),
-(151, 'Pashto'),
-(152, 'Pushto'),
-(153, 'Portuguese'),
-(154, 'Quechua'),
-(155, 'Romansh'),
-(156, 'Kirundi'),
-(157, 'Romanian'),
-(158, 'Moldavian'),
-(159, 'Moldovan'),
-(160, 'Russian'),
-(161, 'Sanskrit'),
-(162, 'Sardinian'),
-(163, 'Sindhi'),
-(164, 'Northern Sami'),
-(165, 'Samoan'),
-(166, 'Sango'),
-(167, 'Serbian'),
-(168, 'Scottish Gaelic'),
-(169, 'Gaelic'),
-(170, 'Shona'),
-(171, 'Sinhala'),
-(172, 'Sinhalese'),
-(173, 'Slovak'),
-(174, 'Slovene'),
-(175, 'Somali'),
-(176, 'Southern Sotho'),
-(177, 'Spanish'),
-(178, 'Castilian'),
-(179, 'Sundanese'),
-(180, 'Swahili'),
-(181, 'Swati'),
-(182, 'Swedish'),
-(183, 'Tamil'),
-(184, 'Telugu'),
-(185, 'Tajik'),
-(186, 'Thai'),
-(187, 'Tigrinya'),
-(188, 'Tibetan Standard'),
-(189, 'Tibetan'),
-(190, 'Turkmen'),
-(191, 'Tagalog'),
-(192, 'Tswana'),
-(193, 'Tonga'),
-(194, 'Turkish'),
-(195, 'Tsonga'),
-(196, 'Tatar'),
-(197, 'Twi'),
-(198, 'Tahitian'),
-(199, 'Uighur'),
-(200, 'Uyghur'),
-(201, 'Ukrainian'),
-(202, 'Urdu'),
-(203, 'Uzbek'),
-(204, 'Venda'),
-(205, 'Vietnamese'),
-(206, 'Volapuk'),
-(207, 'Walloon'),
-(208, 'Welsh'),
-(209, 'Wolof'),
-(210, 'Western Frisian'),
-(211, 'Xhosa'),
-(212, 'Yiddish'),
-(213, 'Yoruba'),
-(214, 'Zhuang'),
-(215, 'Chuang');
+INSERT INTO `tbl_movies` (`movies_id`, `movies_cover`, `movies_title`, `movies_year`, `movies_runtime`, `movies_storyline`) VALUES
+(15, 'lovedrugs.jpg', 'Love and Other Drugs', '2010', '1h 37min', 'Maggie is an alluring free spirit who will not let anyone or anything tie her down. But she meets her match in Jamie, whose relentless and nearly infallible charm serve him well with the ladies and in the cutthroat world of pharmaceutical sales. Maggie and Jamies evolving relationship takes them both by surprise, as they find themselves under the influence of the ultimate drug, love.'),
+(16, 'clueless.jpg', 'Clueless', '1995', '1h 37min', 'Cher, a high school student in Beverly Hills, must survive the ups and downs of adolescent life. Her external demeanour at first seems superficial, but rather it hides her wit, charm, and intelligence which help her to deal with relationships, friends, family, school, and the all important teenage social life.'),
+(17, 'shawshank.jpg', 'The Shawshank Redemption', '1994', '2h 22min', 'Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit. The film portrays the mans unique way of dealing with his new, torturous life, along the way he befriends a number of fellow prisoners, most notably a wise longterm inmate named Red.'),
+(18, 'paranormal.jpg', 'Paranormal Activity', '2007', '1h 26min', 'After a young, middle class couple moves into a suburban starter tract house, they become increasingly disturbed by a presence that may or may not be somehow demonic but is certainly most active in the middle of the night. Especially when they sleep. Or try to.'),
+(19, 'tangled.jpg', 'Tangled', '2010', '1h 40min', 'After receiving the healing powers from a magical flower, the baby Princess Rapunzel is kidnapped from the palace in the middle of the night by Mother Gothel. Mother Gothel knows that the flowers magical powers are now growing within the golden hair of Rapunzel, and to stay young, she must lock Rapunzel in her hidden tower. Rapunzel is now a teenager and her hair has grown to a length of 70 feet. The beautiful Rapunzel has been in the tower her entire life, and she is curious of the outside world. One day, the bandit Flynn Ryder scales the tower and is taken captive by Rapunzel. Rapunzel strikes a deal with the charming thief to act as her guide to travel to the place where the floating lights come from that she has seen every year on her birthday. Rapunzel is about to have the most exciting and magnificent journey of her life.'),
+(20, 'blockers.jpg', 'Blockers', '2018', '1h 42min', 'Three parents try to stop their daughters from having sex on Prom night.'),
+(22, 'croft.jpg', 'Tomb Raider', '2018', '1h 58min', 'Lara Croft is the fiercely independent daughter of an eccentric adventurer who vanished when she was scarcely a teen. Now a young woman of 21 without any real focus or purpose, Lara navigates the chaotic streets of trendy East London as a bike courier, barely making the rent, and takes college courses, rarely making it to class. Determined to forge her own path, she refuses to take the reins of her fathers global empire just as staunchly as she rejects the idea that he is truly gone. Advised to face the facts and move forward after seven years without him, even Lara can not understand what drives her to finally solve the puzzle of his mysterious death. Going explicitly against his final wishes, she leaves everything she knows behind in search of her dads lastknown destination, a fabled tomb on a mythical island that might be somewhere off the coast of Japan. But her mission will not be an easy one. '),
+(27, 'fightclub.jpg', 'Fight Club', '1999', '2h 19min', 'A nameless first person narrator attends support groups in attempt to subdue his emotional state and relieve his insomniac state. When he meets Marla, another fake attendee of support groups, his life seems to become a little more bearable. However when he associates himself with Tyler he is dragged into an underground fight club and soap making scheme. Together the two men spiral out of control and engage in competitive rivalry for love and power. When the narrator is exposed to the hidden agenda of Tylers fight club, he must accept the awful truth that Tyler may not be who he says he is. '),
+(28, 'gump.jpg', 'Forest Gump', '1994', '2h 22min', 'Forrest Gump is a simple man with a low IQ. but has good intentions. He is running through childhood with his best and only friend Jenny. His mama teaches him the ways of life and leaves him to choose his destiny. Forrest joins the army for service in Vietnam, finding new friends called Dan and Bubba, he wins medals, creates a famous shrimp fishing fleet, inspires people to jog, starts a ping-pong craze, creates the smiley, writes bumper stickers and songs, donates to people and meets the president several times. However, this is all irrelevant to Forrest who can only think of his childhood sweetheart Jenny Curran, who has messed up her life. Although in the end all he wants to prove is that anyone can love anyone.'),
+(29, 'hunting.jpg', 'Good Will Hunting', '1997', '2h 6min', 'A touching tale of a wayward young man who struggles to find his identity, living in a world where he can solve any problem, except the one brewing deep within himself, until one day he meets his soul mate who opens his mind and his heart.'),
+(30, 'showman.jpg', 'The Greatest Showman', '2017', '1h 45min', 'Orphaned, penniless but ambitious and with a mind crammed with imagination and fresh ideas, the American Phineas Taylor Barnum will always be remembered as the man with the gift to effortlessly blur the line between reality and fiction. Thirsty for innovation and hungry for success, the son of a tailor will manage to open a wax museum but will soon shift focus to the unique and peculiar, introducing extraordinary, never seen before live acts on the circus stage. Some will call Barnums wide collection of oddities, a freak show. However, when the obsessed showman gambles everything on the opera singer Jenny Lind to appeal to a high-brow audience, he will somehow lose sight of the most important aspect of his life, his family.'),
+(31, 'pulpfiction.jpg', 'Pulp Fiction', '1994', '2h 34min', 'Jules Winnfield and Vincent Vega are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace. Wallace has also asked Vincent to take his wife Mia out a few days later when Wallace himself will be out of town. Butch Coolidge is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled for incidents.'),
+(32, 'playerone.jpg', 'Ready Player One', '2018', '2h 20min', 'In the year 2045, the real world is a harsh place. The only time Wade Watts truly feels alive is when he escapes to the OASIS, an immersive virtual universe where most of humanity spends their days. In the OASIS, you can go anywhere, do anything, be anyone, the only limits are your own imagination. The OASIS was created by the brilliant and eccentric James Halliday, who left his immense fortune and total control of the Oasis to the winner of a three part contest he designed to find a worthy heir. When Wade conquers the first challenge of the reality-bending treasure hunt, he and his friends are hurled into a fantastical universe of discovery and danger to save the OASIS.'),
+(33, 'shapewater.jpg', 'The Shape of Water', '2017', '2h 3min', 'From master storyteller Guillermo del Toro comes THE SHAPE OF WATER, an otherworldly fable set against the backdrop of Cold War era America circa 1962. In the hidden high security government laboratory where she works, lonely Elisa is trapped in a life of isolation. Elisas life is changed forever when she and coworker Zelda discover a secret classified experiment.'),
+(34, 'panther.jpg', 'Black Panther', '2018', '2h 14min', 'After the events of Captain America Civil War, King TChalla returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his countrys new leader. However, TChalla soon finds that he is challenged for the throne from factions within his own country. When two foes conspire to destroy Wakanda, the hero known as Black Panther must team up with CIA. agent Everett K. Ross and members of the Dora Milaje, Wakandan special forces, to prevent Wakanda from being dragged into a world war.'),
+(35, 'gunslingers.jpg', 'Ecstasy of Gold', '2009', '1h 29min', 'Butch is a bounty hunter who just wants to get paid an honest amount for an honest days work. His chattel, morally corrupt Rattler Fenton just wants to cash in on his well hidden and hard won gold. As Butch navigates an increasingly magical West in search of payment he is joined by a quirky band of outcasts and outlaws and terrorized by the entirely evil but not entirely human Mondego gang. Through Butch we learn the very real consequences of greed as he watches the pursuit of the ecstasy of gold. '),
+(36, 'simon.jpg', 'Love, Simon', '2018', '1h 50min', 'A young coming of age teenage boy, Simon Spier, goes through a different kind of Romeo and Juliet story. Simon has a love connection with a boy, Blue, by email, but the only problem is that Simon has no idea who hes talking to. Simon must discover who that boy is, who Blue is. Along the way, he tries to find himself as well.'),
+(37, 'callme.jpg', 'Call Me By Your Name', '2017', '2h 12min', 'A sensual and transcendent tale of first love, based on the acclaimed novel by Andre Aciman. Its the summer of 1983 in the north of Italy, and Elio Perlman, a precocious 17 year old young man, spends his days in his familys 17th century villa transcribing and playing classical music, reading, and flirting with his friend Marzia. Elio enjoys a close relationship with his father, an eminent professor specializing in Greco Roman culture, and his mother Annella, a translator, who favor him with the fruits of high culture in a setting that overflows with natural delights. While Elios sophistication and intellectual gifts suggest he is already a fully fledged adult, there is much that yet remains innocent and unformed about him, particularly about matters of the heart.'),
+(38, 'coco.jpg', 'Coco', '2017', '1h 45min', 'Despite his familys baffling generations old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguels family history.'),
+(39, 'harry.jpg', 'Harry Potter and the Philosophers Stone', '2001', '2h 32min', 'This is the tale of Harry Potter, an ordinary 11 year old boy serving as a sort of slave for his aunt and uncle who learns that he is actually a wizard and has been invited to attend the Hogwarts School for Witchcraft and Wizardry. Harry is snatched away from his mundane existence by Rubeus Hagrid, the grounds keeper for Hogwarts, and quickly thrown into a world completely foreign to both him and the viewer. Famous for an incident that happened at his birth, Harry makes friends easily at his new school. He soon finds, however, that the wizarding world is far more dangerous for him than he would have imagined, and he quickly learns that not all wizards are ones to be trusted. '),
+(40, 'loseaguy.jpg', 'How to Lose a Guy in 10 Days', '2003', '1h 56min', 'Benjamin Barry is an advertising executive competing with two female coworkers for a major campaign for a diamond merchant. He cuts a deal with his competitors that the account is his if he can make a woman of their choice fall in love with him in 10 days. In comes Andie Anderson who, in turn, is writing a story on how to lose a guy in 10 days as a bet with her boss to be allowed to write more substantial stories. With a hidden agenda in each camp, will either party be able to complete their mission?'),
+(41, 'centrestage.jpg', 'Center Stage', '2000', '1h 55min', 'The education of three young students, Jodie, Eva and Maureen, as they study at the American Ballet Academy. Life is not what they expected at the esteemed ABA, and all three face problems along the road. Jodie does not have the ideal body for dancing, Eva does not have the right attitude, and Maureen does not have the heart. Along the way, they learn that love can be found in unlikely places, and dancing should be a passion, not a duty.'),
+(42, 'moana.jpg', 'Moana', '2016', '1h 47min', 'Moana Waialiki is a sea voyaging enthusiast and the only daughter of a chief in a long line of navigators. When her islands fishermen cannot catch any fish and the crops fail, she learns that the demigod Maui caused the blight by stealing the heart of the goddess, Te Fiti. The only way to heal the island is to persuade Maui to return Te Fitis heart, so Moana sets off on an epic journey across the Pacific. The film is based on stories from Polynesian mythology.'),
+(43, 'post.jpg', 'The Post', '2017', '1h 56min', 'When American military analyst, Daniel Ellsberg, realizes to his disgust the depths of the US governments deceptions about the futility of the Vietnam War, he takes action by copying topsecret documents that would become the Pentagon Papers. Later, Washington Post owner, Kay Graham, is still adjusting to taking over her late husbands business when editor Ben Bradlee discovers the New York Times has scooped them with an explosive expose on those papers. Determined to compete, Post reporters find Ellsberg himself and a complete copy of those papers. However, the Posts plans to publish their findings are put in jeopardy with a Federal restraining order that could get them all indicted for Contempt. Now, Kay Graham must decide whether to back down for the safety of her paper or publish and fight for the Freedom of the Press. In doing so, Graham and her staff join a fight that would have Americas democratic ideals in the balance.'),
+(44, 'molly.jpg', 'Mollys Game', '2017', '2h 20min', 'Molly Bloom, a beautiful young Olympic class skier, ran the worlds most exclusive highstakes poker game for a decade before being arrested in the middle of the night by 17 FBI agents wielding automatic weapons. Her players included Hollywood royalty, sports stars, business titans, and finally, unbeknownst to her, the Russian mob. Her only ally was her criminal defense lawyer Charlie Jaffey, who learned that there was much more to Molly than the tabloids led us to believe.'),
+(45, 'moneyworld.jpg', 'All the Money in the World', '2017', '2h 12min', 'Rome, 1973. Masked men kidnap a teenage boy named John Paul Getty III. His grandfather, Jean Paul Getty , is the richest human world, a billionaire oil magnate, but hes notoriously miserly. His favorite grandsons abduction is not reason enough for him to part with any of his fortune. All the Money in the World follows Gail, Pauls devoted, strong willed mother, who unlike Getty, has consistently chosen her children over his fortune. Her sons life in the balance with time running out, she attempts to sway Getty even as her sons mob captors become increasingly more determined, volatile and brutal. When Getty sends his enigmatic security man Fletcher Chace to look after his interests, he and Gail become unlikely allies in this race against time that ultimately reveals the true and lasting value of love over money.'),
+(46, 'moonlight.jpg', 'Moonlight', '2016', '1h 51min', 'Three time periods, young adolescence, midteen and young adult, in the life of black American Chiron is presented. When a child, Chiron lives with his single, crack addict mother Paula in a crime ridden neighborhood in Miami. Chiron is a shy, withdrawn child largely due to his small size and being neglected by his mother, who is more concerned about getting her fixes and satisfying her carnal needs than taking care of him. Because of these issues, Chiron is bullied, the slurs hurled at him which he does not understand beyond knowing that they are meant to be hurtful. Besides his same aged Cuban American friend Kevin, Chiron is given what little guidance he has in life from a neighborhood drug dealer named Juan, who can see that he is neglected, and Juans caring girlfriend Teresa, whose home acts as a sanctuary away from the bullies and away from Paulas abuse. With this childhood as a foundation, Chiron may have a predetermined path in life, one that will only be magnified in terms.'),
+(47, 'spotlight.jpg', 'Spotlight', '2015', '2h 8min', 'When the Boston Globes tenacious Spotlight team of reporters delves into allegations of abuse in the Catholic Church, their year long investigation uncovers a decades long cover up at the highest levels of Bostons religious, legal, and government establishment, touching off a wave of revelations around the world.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tbl_movies
+-- Table structure for table `tbl_mov_genre`
 --
 
-CREATE TABLE tbl_movies (
-  movies_id mediumint(8) UNSIGNED NOT NULL,
-  movies_cover varchar(75) NOT NULL DEFAULT 'cover_default.jpg',
-  movies_title varchar(125) NOT NULL,
-  movies_year varchar(5) NOT NULL,
-  movies_runtime varchar(25) NOT NULL,
-  movies_storyline text NOT NULL,
-  movies_trailer varchar(75) NOT NULL DEFAULT 'trailer_default.jpg',
-  movies_release varchar(125) NOT NULL
+CREATE TABLE `tbl_mov_genre` (
+  `mov_genre_id` mediumint(8) UNSIGNED NOT NULL,
+  `movies_id` mediumint(9) NOT NULL,
+  `genre_id` mediumint(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table tbl_movies
+-- Dumping data for table `tbl_mov_genre`
 --
 
-INSERT INTO tbl_movies (movies_id, movies_cover, movies_title, movies_year, movies_runtime, movies_storyline, movies_trailer, movies_release) VALUES
-(1, 'guardians2.jpg', 'Guardians of the Galaxy Vol. 2', '2017', '2h 16m', 'The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill&rsquo;s true parentage.', 'Guardians2.mp4', 'May 5, 2017'),
-(2, 'dunkirk.jpg', 'Dunkirk', '2017', '1h 46m', 'Allied soldiers from Belgium, the British Empire and France are surrounded by the German army and evacuated during a fierce battle in World War II.', 'Dunkirk.mp4', 'July 21, 2017'),
-(3, 'logan.jpg', 'Logan', '2017', '2h 17m', 'In the near future, a weary Logan cares for an ailing Professor X, somewhere on the Mexican border. However, Logan&rsquo;s attempts to hide from the world, and his legacy, are upended when a young mutant arrives, pursued by dark forces.', 'Logan.mp4', 'March 3,2017'),
-(4, 'okja.jpg', 'Okja', '2017', '2h', ' Meet Mija, a young girl who risks everything to prevent a powerful, multi-national company from kidnapping her best friend - a fascinating animal named Okja. ', 'Okja.mp4', 'June 28,2017'),
-(5, 'beauty.jpg', 'Beauty and the Beast', '2017', '2h 9min', 'An adaptation of the fairy tale about a monstrous-looking prince and a young woman who fall in love. ', 'Beauty.mp4', 'March 17, 2017'),
-(6, 'hacksaw.jpg', 'Hacksaw Ridge', '2016', '2h 19m', 'WWII American Army Medic Desmond T. Doss, who served during the Battle of Okinawa, refuses to kill people, and becomes the first man in American history to receive the Medal of Honor without firing a shot.', 'Hacksaw.mp4', 'November 4, 2016'),
-(7, 'deadpool.jpg', 'Deadpool', '2016', '1h 48m', 'A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge.', 'Bloodpool.mp4', 'Febuary 12, 2016'),
-(8, 'arrival.jpg', 'Arrival', '2016', '1h 56m', 'When twelve mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.', 'Arrival.mp4', 'November 11, 2016'),
-(9, 'eddie.jpg', 'Eddie the Eagle', '2016', '1h 46m', 'The story of Eddie Edwards, the notoriously tenacious British underdog ski jumper who charmed the world at the 1988 Winter Olympics.', 'Eddie.mp4', 'Febuary 26, 2016'),
-(10, 'trolls.jpg', 'Trolls', '2016', '1h 32m', 'After the Bergens invade Troll Village, Poppy, the happiest Troll ever born, and the curmudgeonly Branch set off on a journey to rescue her friends.', 'Trolls.mp4', 'November 4, 2016'),
-(11, 'revenant.jpg', 'The Revenant', '2015', '2h 36m', 'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.', 'Revenant.mp4', 'January 8, 2015'),
-(12, 'brooklyn.jpg', 'Brooklyn', '2015', '1h 57m', 'An Irish immigrant lands in 1950s Brooklyn, where she quickly falls into a romance with a local. When her past catches up with her, however, she must choose between two countries and the lives that exist within.', 'Brooklyn.mp4', 'November 25, 2015'),
-(13, 'walk.jpg', 'The Walk', '2015', '2h 3m', 'In 1974, high-wire artist Philippe Petit recruits a team of people to help him realize his dream: to walk the immense void between the World Trade Center towers.', 'Walk.mp4', 'October 9, 2015'),
-(14, 'colonia.jpg', 'Colonia', '2015', '1h 46m', 'A young woman&rsquo;s desperate search for her abducted boyfriend that draws her into the infamous Colonia Dignidad, a sect nobody has ever escaped from.', 'Colonia.mp4', 'April 15, 2015'),
-(15, 'force.jpg', 'Star Wars: The Force Awakens', '2015', '2h 16m', 'Three decades after the Empire&rsquo;s defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and spare parts scavenger Rey are caught up in the Resistance&rsquo;s search for the missing Luke Skywalker.', 'Force.mp4', 'December 18, 2015'),
-(16, 'whiplash.jpg', 'Whiplash', '2014', '1h 47m', 'A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student\'s potential.', 'Whiplash.mp4', 'October 15, 2014'),
-(17, 'guardians.jpg', 'Guardians of the Galaxy', '2014', '2h 1m', 'A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.', 'Guardians.mp4', 'August 1, 2014'),
-(18, 'donjon.jpg', 'Don Jon', '2013', '1h 30m', 'A New Jersey guy dedicated to his family, friends, and church, develops unrealistic expectations from watching porn and works to find happiness and intimacy with his potential true love.', 'donjon.mp4', 'September 27, 2013'),
-(19, 'gravity.jpg', 'Gravity', '2013', '1h 31m', 'Two astronauts work together to survive after an accident which leaves them alone in space.', 'Gravity.mp4', 'October 4, 2013'),
-(20, 'pi.jpg', 'Life of Pi', '2012', '2h 7m', 'A young man who survives a disaster at sea is hurtled into an epic journey of adventure and discovery. While cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.', 'Pi.jpg', 'November 21, 2012'),
-(21, 'silver.jpg', 'Silver Linings Playbook', '2012', '2h 2m', 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', 'Silver.jpg', 'December 25, 2012');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_mov_cast
---
-
-CREATE TABLE tbl_mov_cast (
-  mov_cast_id mediumint(8) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  cast_id mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_mov_cast
---
-
-INSERT INTO tbl_mov_cast (mov_cast_id, movies_id, cast_id) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(5, 1, 5),
-(6, 2, 6),
-(7, 2, 7),
-(8, 2, 8),
-(9, 2, 9),
-(10, 2, 10),
-(11, 3, 11),
-(12, 3, 12),
-(13, 3, 13),
-(14, 3, 14),
-(15, 3, 15),
-(16, 4, 16),
-(17, 4, 17),
-(18, 4, 18),
-(19, 4, 19),
-(20, 4, 20),
-(21, 5, 21),
-(22, 5, 22),
-(23, 5, 23),
-(24, 5, 24),
-(25, 5, 25),
-(26, 6, 26),
-(27, 6, 27),
-(28, 6, 28),
-(29, 6, 29),
-(30, 6, 30),
-(31, 7, 31),
-(32, 7, 32),
-(33, 7, 33),
-(34, 7, 34),
-(35, 7, 35),
-(36, 8, 36),
-(37, 8, 37),
-(38, 8, 38),
-(39, 8, 39),
-(40, 8, 40),
-(41, 9, 41),
-(42, 10, 42),
-(43, 11, 43),
-(44, 12, 44),
-(45, 13, 45),
-(46, 14, 21),
-(47, 15, 46),
-(48, 16, 47),
-(49, 17, 1),
-(50, 18, 45),
-(51, 19, 52),
-(52, 20, 53),
-(53, 21, 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_mov_country
---
-
-CREATE TABLE tbl_mov_country (
-  mov_country_id mediumint(8) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  country_id smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_mov_country
---
-
-INSERT INTO tbl_mov_country (mov_country_id, movies_id, country_id) VALUES
-(1, 1, 34),
-(2, 1, 134),
-(3, 1, 184),
-(4, 2, 184),
-(5, 2, 183),
-(6, 2, 131),
-(7, 2, 64),
-(8, 3, 12),
-(9, 3, 34),
-(10, 3, 184),
-(11, 4, 184),
-(12, 4, 97),
-(13, 5, 183),
-(14, 5, 184),
-(15, 6, 184),
-(16, 6, 12),
-(17, 7, 184),
-(18, 8, 184),
-(19, 9, 183),
-(20, 9, 184),
-(21, 9, 68),
-(22, 10, 184),
-(23, 11, 184),
-(24, 11, 81),
-(25, 11, 171);
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_mov_director
---
-
-CREATE TABLE tbl_mov_director (
-  mov_director_id mediumint(8) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  director_id smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_mov_director
---
-
-INSERT INTO tbl_mov_director (mov_director_id, movies_id, director_id) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 5, 5),
-(6, 6, 6),
-(7, 7, 7),
-(8, 8, 8),
-(9, 9, 9),
-(10, 10, 10),
-(11, 10, 11),
-(12, 11, 12),
-(13, 12, 13),
-(14, 13, 14),
-(15, 14, 15),
-(16, 15, 16),
-(17, 16, 17),
-(18, 17, 1),
-(19, 18, 19),
-(20, 19, 20),
-(21, 20, 21);
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_mov_genre
---
-
-CREATE TABLE tbl_mov_genre (
-  mov_genre_id mediumint(8) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  genre_id mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_mov_genre
---
-
-INSERT INTO tbl_mov_genre (mov_genre_id, movies_id, genre_id) VALUES
+INSERT INTO `tbl_mov_genre` (`mov_genre_id`, `movies_id`, `genre_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 9),
@@ -880,352 +149,116 @@ INSERT INTO tbl_mov_genre (mov_genre_id, movies_id, genre_id) VALUES
 (28, 9, 5),
 (29, 9, 16),
 (30, 10, 14),
-(31, 10, 2),
-(32, 10, 3),
-(33, 10, 8),
-(34, 10, 13),
-(35, 11, 2),
-(36, 11, 5);
+(41, 15, 15),
+(42, 16, 3),
+(43, 17, 4),
+(44, 18, 7),
+(45, 19, 12),
+(46, 20, 3),
+(47, 22, 1),
+(48, 23, 8),
+(49, 24, 5),
+(50, 25, 5),
+(51, 26, 5),
+(52, 27, 5),
+(53, 28, 5),
+(54, 29, 5),
+(55, 30, 8),
+(56, 31, 4),
+(57, 32, 9),
+(58, 33, 2),
+(59, 34, 1),
+(60, 35, 11),
+(61, 36, 15),
+(62, 37, 15),
+(63, 38, 12),
+(64, 39, 14),
+(65, 40, 15),
+(66, 41, 5),
+(67, 42, 12),
+(68, 43, 6),
+(69, 44, 5),
+(70, 45, 4),
+(71, 46, 5),
+(72, 47, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table tbl_mov_lang
+-- Table structure for table `tbl_user`
 --
 
-CREATE TABLE tbl_mov_lang (
-  mov_lang_id smallint(5) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  language_id smallint(6) NOT NULL
+CREATE TABLE `tbl_user` (
+  `user_id` mediumint(8) UNSIGNED NOT NULL,
+  `user_fname` varchar(250) NOT NULL,
+  `user_name` varchar(250) NOT NULL,
+  `user_pass` varchar(250) NOT NULL,
+  `user_email` varchar(250) NOT NULL,
+  `user_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_ip` varchar(50) NOT NULL DEFAULT 'no',
+  `user_lvllist` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table tbl_mov_lang
+-- Dumping data for table `tbl_user`
 --
 
-INSERT INTO tbl_mov_lang (mov_lang_id, movies_id, language_id) VALUES
-(1, 1, 45),
-(2, 2, 45),
-(3, 2, 52),
-(4, 2, 59),
-(5, 3, 45),
-(6, 3, 177),
-(7, 4, 45),
-(8, 4, 177),
-(9, 4, 97),
-(10, 5, 45),
-(11, 6, 45),
-(12, 6, 81),
-(13, 7, 45),
-(14, 8, 45),
-(15, 8, 33),
-(16, 8, 160),
-(17, 9, 45),
-(18, 9, 126),
-(19, 9, 59),
-(20, 10, 45),
-(21, 11, 45),
-(22, 11, 52);
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_mov_studio
---
-
-CREATE TABLE tbl_mov_studio (
-  mov_studio_id mediumint(8) UNSIGNED NOT NULL,
-  movies_id mediumint(9) NOT NULL,
-  studio_id smallint(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_mov_studio
---
-
-INSERT INTO tbl_mov_studio (mov_studio_id, movies_id, studio_id) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 5, 5),
-(6, 6, 6),
-(7, 7, 7),
-(8, 8, 8),
-(9, 9, 9),
-(10, 10, 10),
-(11, 11, 11),
-(12, 12, 12),
-(13, 13, 13),
-(14, 14, 14),
-(15, 15, 15),
-(16, 16, 16),
-(17, 17, 1),
-(18, 18, 17),
-(19, 19, 18),
-(20, 20, 19),
-(21, 21, 20);
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_studio
---
-
-CREATE TABLE tbl_studio (
-  studio_id smallint(5) UNSIGNED NOT NULL,
-  studio_name varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table tbl_studio
---
-
-INSERT INTO tbl_studio (studio_id, studio_name) VALUES
-(1, 'Marvel Studios'),
-(2, 'Syncopy'),
-(3, 'Donners Company'),
-(4, 'Kate Street Picture Company'),
-(5, 'Mandeville Films'),
-(6, 'Cross Creek Pictures'),
-(7, 'Twentieth Century Fox Film Corporation'),
-(8, 'Lava Bear Films'),
-(9, 'Hurwitz Creative'),
-(10, 'DreamWorks Animation'),
-(11, 'Regency Enterprises'),
-(12, 'Wildgaze Films'),
-(13, 'Sony Pictures Entertainment (SPE)'),
-(14, 'Majestic Filmproduktion'),
-(15, 'Lucasfilm'),
-(16, 'Bold Films'),
-(17, 'Voltage Pictures'),
-(18, 'Warner Bros.'),
-(19, 'Fox 2000 Pictures'),
-(20, 'Weinstein Company');
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_urating
---
-
-CREATE TABLE tbl_urating (
-  rating_id tinyint(3) UNSIGNED NOT NULL,
-  rating_number tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table tbl_user
---
-
-CREATE TABLE tbl_user (
-  user_id mediumint(8) UNSIGNED NOT NULL,
-  user_fname varchar(250) NOT NULL,
-  user_name varchar(250) NOT NULL,
-  user_pass varchar(250) NOT NULL,
-  user_email varchar(250) NOT NULL,
-  user_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  user_ip varchar(50) NOT NULL DEFAULT 'no'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `user_lvllist`) VALUES
+(1, 'Kiija', 'kiija123', 'kiija123', 'kiijagargarello@gmail.com', '2018-03-07 20:50:46', '::1', 0),
+(2, 'Abby', 'Abby', 'test', 'test', '2018-03-08 19:31:20', '::1', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table tbl_arating
+-- Indexes for table `tbl_genre`
 --
-ALTER TABLE tbl_arating
-  ADD PRIMARY KEY (arating_id);
+ALTER TABLE `tbl_genre`
+  ADD PRIMARY KEY (`genre_id`);
 
 --
--- Indexes for table tbl_cast
+-- Indexes for table `tbl_movies`
 --
-ALTER TABLE tbl_cast
-  ADD PRIMARY KEY (cast_id),
-  ADD UNIQUE KEY cast_name (cast_name);
+ALTER TABLE `tbl_movies`
+  ADD PRIMARY KEY (`movies_id`);
 
 --
--- Indexes for table tbl_comments
+-- Indexes for table `tbl_mov_genre`
 --
-ALTER TABLE tbl_comments
-  ADD PRIMARY KEY (comments_id);
+ALTER TABLE `tbl_mov_genre`
+  ADD PRIMARY KEY (`mov_genre_id`);
 
 --
--- Indexes for table tbl_country
+-- Indexes for table `tbl_user`
 --
-ALTER TABLE tbl_country
-  ADD PRIMARY KEY (country_id);
-
---
--- Indexes for table tbl_director
---
-ALTER TABLE tbl_director
-  ADD PRIMARY KEY (director_id);
-
---
--- Indexes for table tbl_genre
---
-ALTER TABLE tbl_genre
-  ADD PRIMARY KEY (genre_id);
-
---
--- Indexes for table tbl_language
---
-ALTER TABLE tbl_language
-  ADD PRIMARY KEY (lang_id);
-
---
--- Indexes for table tbl_movies
---
-ALTER TABLE tbl_movies
-  ADD PRIMARY KEY (movies_id);
-
---
--- Indexes for table tbl_mov_cast
---
-ALTER TABLE tbl_mov_cast
-  ADD PRIMARY KEY (mov_cast_id);
-
---
--- Indexes for table tbl_mov_country
---
-ALTER TABLE tbl_mov_country
-  ADD PRIMARY KEY (mov_country_id);
-
---
--- Indexes for table tbl_mov_director
---
-ALTER TABLE tbl_mov_director
-  ADD PRIMARY KEY (mov_director_id);
-
---
--- Indexes for table tbl_mov_genre
---
-ALTER TABLE tbl_mov_genre
-  ADD PRIMARY KEY (mov_genre_id);
-
---
--- Indexes for table tbl_mov_lang
---
-ALTER TABLE tbl_mov_lang
-  ADD PRIMARY KEY (mov_lang_id);
-
---
--- Indexes for table tbl_mov_studio
---
-ALTER TABLE tbl_mov_studio
-  ADD PRIMARY KEY (mov_studio_id);
-
---
--- Indexes for table tbl_studio
---
-ALTER TABLE tbl_studio
-  ADD PRIMARY KEY (studio_id);
-
---
--- Indexes for table tbl_urating
---
-ALTER TABLE tbl_urating
-  ADD PRIMARY KEY (rating_id);
-
---
--- Indexes for table tbl_user
---
-ALTER TABLE tbl_user
-  ADD PRIMARY KEY (user_id);
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table tbl_arating
+-- AUTO_INCREMENT for table `tbl_genre`
 --
-ALTER TABLE tbl_arating
-  MODIFY arating_id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_genre`
+  MODIFY `genre_id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
--- AUTO_INCREMENT for table tbl_cast
+-- AUTO_INCREMENT for table `tbl_movies`
 --
-ALTER TABLE tbl_cast
-  MODIFY cast_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_movies`
+  MODIFY `movies_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
--- AUTO_INCREMENT for table tbl_comments
+-- AUTO_INCREMENT for table `tbl_mov_genre`
 --
-ALTER TABLE tbl_comments
-  MODIFY comments_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_mov_genre`
+  MODIFY `mov_genre_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
--- AUTO_INCREMENT for table tbl_country
+-- AUTO_INCREMENT for table `tbl_user`
 --
-ALTER TABLE tbl_country
-  MODIFY country_id smallint(3) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_director
---
-ALTER TABLE tbl_director
-  MODIFY director_id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_genre
---
-ALTER TABLE tbl_genre
-  MODIFY genre_id tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_language
---
-ALTER TABLE tbl_language
-  MODIFY lang_id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_movies
---
-ALTER TABLE tbl_movies
-  MODIFY movies_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_cast
---
-ALTER TABLE tbl_mov_cast
-  MODIFY mov_cast_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_country
---
-ALTER TABLE tbl_mov_country
-  MODIFY mov_country_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_director
---
-ALTER TABLE tbl_mov_director
-  MODIFY mov_director_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_genre
---
-ALTER TABLE tbl_mov_genre
-  MODIFY mov_genre_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_lang
---
-ALTER TABLE tbl_mov_lang
-  MODIFY mov_lang_id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_mov_studio
---
-ALTER TABLE tbl_mov_studio
-  MODIFY mov_studio_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_studio
---
-ALTER TABLE tbl_studio
-  MODIFY studio_id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_urating
---
-ALTER TABLE tbl_urating
-  MODIFY rating_id tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table tbl_user
---
-ALTER TABLE tbl_user
-  MODIFY user_id mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
